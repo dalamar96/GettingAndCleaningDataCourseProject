@@ -35,4 +35,6 @@ MeanandSTD_TrainandTestData<-MergeTrainandTestData[,colsToKeep, drop=FALSE]
 MeanandSTD_TrainandTestData$activity<-factor(MeanandSTD_TrainandTestData$activity, labels=activityLabels)
 
 TidyDataset<-aggregate(MeanandSTD_TrainandTestData[,2:87], list(MeanandSTD_TrainandTestData$subject, MeanandSTD_TrainandTestData$activity), mean)
+colnames(TidyDataset)[1] <- "Subject"
+colnames(TidyDataset)[2] <- "Activity"
 write.table(TidyDataset, file="tidydataset.txt", row.names=FALSE)
